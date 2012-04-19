@@ -1,0 +1,47 @@
+<%# tag definitions for the hobo_data_tables plugin %>
+
+<%# Generates a `<table>` and activate [DataTables](http://datatables.net) on it.
+
+Supports all attributes and parameters of a `<table>`, and supports all initializer options of [DataTables](http://datatables.net) as attributes.
+
+### Example:
+
+    <data-table bJqueryUI fields="foo, bar"/>
+
+ %>
+<def tag="data-table">
+ <% options, attrs = attributes.partition_hash(%w(aaData aaSorting
+aaSortingFixed aDataSort aLengthMenu aoSearchCols asSorting
+asStripeClasses bAutoWidth bDeferRender bDestroy bFilter bInfo
+bJQueryUI bLengthChange bPaginate bProcessing bRetrieve bScrollAutoCss
+bScrollCollapse bScrollInfinite bSearchable bServerSide bServerSide
+bSort bSortable bSortCellsTop bSortClasses bStateSave bUseRendered
+bVisible iCookieDuration iDataSort iDeferLoading iDisplayLength iDisplayStart
+iScrollLoadGap iTabIndex mDataProp oLanguage.oAria.sSortAscending
+oLanguage.oAria.sSortDescending oLanguage.oPaginate.sFirst
+oLanguage.oPaginate.sLast oLanguage.oPaginate.sNext
+oLanguage.oPaginate.sPrevious oLanguage.sEmptyTable oLanguage.sInfo
+oLanguage.sInfoEmpty oLanguage.sInfoFiltered oLanguage.sInfoPostFix
+oLanguage.sInfoThousands oLanguage.sLengthMenu
+oLanguage.sLoadingRecords oLanguage.sProcessing oLanguage.sSearch
+oLanguage.sUrl oLanguage.sZeroRecords oSearch sAjaxDataProp
+sAjaxDataProp sAjaxSource sAjaxSource sCellType sClass sContentPadding
+sCookiePrefix sDefaultContent sDom sName sPaginationType sScrollX
+sScrollXInner sScrollY sServerMethod sServerMethod sSortDataType
+sTitle sType sWidth
+))
+    events, html_attrs = attrs.partition_hash([%w(fnAddData fnAdjustColumnSizing fnClearTable fnClose
+fnCookieCallback fnCreatedCell fnCreatedRow fnDeleteRow fnDestroy
+fnDraw fnDrawCallback fnFilter fnFooterCallback fnFormatNumber
+fnGetData fnGetNodes fnGetPosition fnHeaderCallback fnInfoCallback
+fnInitComplete fnIsDataTable fnIsOpen fnOpen fnPageChange
+fnPreDrawCallback fnRender fnRowCallback fnServerData fnServerData
+fnServerParams fnServerParams fnSetColumnVis fnSettings fnSort
+fnSortListener fnStateLoad fnStateLoaded fnStateLoadParams fnStateSave
+fnStateSaveParams fnTables fnUpdate fnVersionCheck fnVersionCheck)])
+    rapid_opts = {:options => options, :events => events}
+ %>
+  <table merge data-rapid="#{data_rapid('data-table', rapid_opts )}" param="default" />
+</def>
+
+
